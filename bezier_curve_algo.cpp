@@ -13,19 +13,6 @@ typedef struct wcPt3D
 	GLfloat x, y, z;
 };
 
-void bino(GLint n, GLint* C)
-{
-	GLint k, j;
-	for (k = 0; k <= n; k++)
-	{
-		C[k] = 1;
-		for (j = n; j >= k + 1; j--)
-			C[k] *= j;
-		for (j = n - k; j >= 2; j--)
-			C[k] /= j;
-	}
-}
-
 void computeBezPt(GLfloat u, wcPt3D* bezPt, GLint nCtrlPts, wcPt3D* ctrlPts, GLint* C)
 {
 	GLint k, n = nCtrlPts - 1;
@@ -37,6 +24,19 @@ void computeBezPt(GLfloat u, wcPt3D* bezPt, GLint nCtrlPts, wcPt3D* ctrlPts, GLi
 		bezPt->x += ctrlPts[k].x * bezBlendFcn;
 		bezPt->y += ctrlPts[k].y * bezBlendFcn;
 		bezPt->z += ctrlPts[k].z * bezBlendFcn;
+	}
+}
+
+void bino(GLint n, GLint* C)
+{
+	GLint k, j;
+	for (k = 0; k <= n; k++)
+	{
+		C[k] = 1;
+		for (j = n; j >= k + 1; j--)
+			C[k] *= j;
+		for (j = n - k; j >= 2; j--)
+			C[k] /= j;
 	}
 }
 
