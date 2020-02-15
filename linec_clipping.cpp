@@ -139,6 +139,7 @@ void display()
 	CohenSutherlandLineClipAndDraw(x0, y0, x1, y1);
 	glFlush();
 }
+
 void myinit()
 {
 	glClearColor(1.0, 1.0, 1.0, 1.0);
@@ -148,6 +149,7 @@ void myinit()
 	glLoadIdentity();
 	gluOrtho2D(0.0, 499.0, 0.0, 499.0);
 }
+
 void test_main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
